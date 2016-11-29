@@ -1,0 +1,26 @@
+<% @review.comments.each do |item|%>
+<div class="cmttext">
+  <%= gravatar_for item.user,40 %>
+  <b><%= item.user.fullname %></b>:
+  <%= text_area :comment,:content,:value=> item.content,id: "text_area",:disabled => true %>
+  <i>(<%= time_ago_in_words(item.created_at) %>)</i>
+  <%= link_to "","javascript:void(0)",class: "fa fa-pencil",id: "editcmt" %>
+  <%= link_to "",comment_path(item.id),method: "delete",class: "fa fa-times" %><br>
+  <div class="action_cmt">
+    <%= link_to "Like","javascript:void(0)",id: "like" %>
+    <%= link_to "Reply","javascript:void(0)",class: "reply", id: item.id, review_id: @review.id %>
+  </div>
+</div>
+<div class="chird_cmt"></div>
+<br>
+<%= render "comments/reply" %>
+<hr>
+<% end %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var aa = document.getElementById('text_area');
+  $("editcmt")[0].click(function() {
+    alert(1);
+
+  });
+</script>

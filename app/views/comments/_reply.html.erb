@@ -1,0 +1,31 @@
+<div class="replyform"></div>
+<script type="text/javascript">
+	var cmt_id;
+	var review_id;
+	var allArea =document.getElementsByClassName("rl_cmt");
+	var allElements = document.getElementsByClassName("reply");
+	var addCommentField = function() {
+		for (var i = 0; allElements.length > i; i++) {
+			if (allElements[i] === this) {
+				var cmt_id=this.getAttribute("id");
+				var review_id=this.getAttribute("review_id");
+
+				if (document.getElementsByClassName("replyform")[i].innerHTML.length === 0) {
+					document.getElementsByClassName("replyform")[i].innerHTML = "<form method='post' action='/comments' data-remote='true' ><textarea class='rl_cmt' name='comment[content]'autofocus ></textarea><input type='hidden' name='comment[parent_id]' value='"+cmt_id+"'/><input type='hidden' name='comment[target_id]' value='"+review_id+"'/> <input type='submit' id='btn_rep' class='btn btn-submit' onclick('checkcmt();')/> </form>";
+				}
+			}
+		}
+	};
+	for (var i = 0; i < allElements.length; i++) {
+		allElements[i].addEventListener('click', addCommentField, false);
+	}
+
+
+
+</script>
+<script type="text/javascript">
+	function checkcmt(){
+		console.log($(".rl_cmt"));
+	}
+
+</script>

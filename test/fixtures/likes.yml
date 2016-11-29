@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_like: 1
+  target_id: 1
+  target_type: MyString
+  user: one
+
+two:
+  num_like: 1
+  target_id: 1
+  target_type: MyString
+  user: two

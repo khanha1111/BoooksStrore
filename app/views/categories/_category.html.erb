@@ -1,0 +1,15 @@
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.id %></td>
+    <td><%= category.name %></td>
+    <td><%= category.parent_id %></td>
+    <td>
+      <%= link_to t("edit"), edit_category_path(id:category.id),
+        class: "fa fa-pencil-square-o" %>
+    </td>
+    <td>
+      <%= link_to t("delete"), category_path(id:category), method: "delete",
+        data: {confirm: t(".confirm")}, class: "fa fa-pencil-square-o" %>
+    </td>
+  </tr>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cate_name: MyString
+  title: MyString
+  publish_date: 2016-11-17
+  author: MyString
+  num_of_page: 1
+  image: MyString
+  status: false
+  user: one
+
+two:
+  cate_name: MyString
+  title: MyString
+  publish_date: 2016-11-17
+  author: MyString
+  num_of_page: 1
+  image: MyString
+  status: false
+  user: two

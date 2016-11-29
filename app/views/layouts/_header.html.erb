@@ -1,0 +1,75 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="header">
+				<div class="top_row">
+					<div class="header-buttons">
+						<div class="header-button currency-list">
+							<% if login?  %>
+							<a href="#">
+							<%= current_user.fullname  %>
+							</a>
+							<ul>
+								<li>
+									<a href="">Profile</a>
+								</li>
+								<li>
+									<a href="">Settings</a>
+								</li>
+								<li>
+									<%= link_to "Logout",logout_path %>
+								</li>
+							</ul>
+							<% end  %>
+						</div>
+
+					</div>
+				</div>
+				<h1 class="logo"><strong>Magento Commerce</strong><a href="#" title="Magento Commerce"><img src="http://livedemo00.template-help.com/magento_50899/skin/frontend/default/theme286k/images/logo.gif" alt="Magento Commerce"/></a></h1>
+				<div class="right_head">
+					<p class="welcome-msg">Welcome to our online store! </p>
+
+					<div class="clear"></div>
+					<div class="head_row">
+						<ul class="links">
+							<li class="first"><a href="http://livedemo00.template-help.com/magento_50899/" title="Home">Home</a></li>
+							<li><a href="http://livedemo00.template-help.com/magento_50899/customer/account/" title="My Account">Book Store</a></li>
+							<li><a href="http://livedemo00.template-help.com/magento_50899/wishlist/" title="My Wishlist">My Wishlist</a></li>
+							<li><a href="http://livedemo00.template-help.com/magento_50899/checkout/cart/" title="My Cart" class="top-link-cart">My Cart</a></li>
+							<li><a href="http://livedemo00.template-help.com/magento_50899/checkout/" title="Checkout" class="top-link-checkout">Checkout</a></li>
+							<li class=" last"><%= link_to "Login",login_path %></li>
+						</ul>
+						<form id="search_mini_form" action="" method="get">
+							<div class="form-search">
+								<label for="search">Search</label>
+								<button type="submit" title="Search" class="button"><strong><i class="fa fa-search"></i></strong></button>
+								<div class="header-button currency-list">
+									<a href="#" id="general">General</a>
+									<ul>
+										<li><a href="#" class="condition_search">By Title</a></li>
+										<li><a href="#" class="condition_search">By Author</a></li>
+										<li><a href="#" class="condition_search">By Category</a></li>
+										<li><a href="#" class="condition_search">By Rating</a></li>
+										<li><a href="#" class="condition_search">By Favorite</a></li>
+										<li><a href="#" class="condition_search">General</a></li>
+									</ul>
+									<input type="hidden" name="val" class="general" >
+								</div>
+								<input id="search" type="text" name="q" value="" class="input-text"/>
+								<div id="search_autocomplete" class="search-autocomplete"></div>
+							</div>
+						</form>
+						<style>.ajaxsearch{border:solid #CCCCCC 1px}.ajaxsearch .suggest{background:#ff160f;color:#B4B4B4}.ajaxsearch .suggest .amount{color:#ffffff}.ajaxsearch .preview{background:#ffffff}.ajaxsearch .preview a{color:#ff160f}.ajaxsearch .preview .description{color:#999}.ajaxsearch .preview img{float:left;border:solid 1px #CCC}.header .form-search .ajaxsearch li.selected{background-color:#f2f2f2}</style> </div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="main-container col2-left-layout">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="main">
+          <div class="row">

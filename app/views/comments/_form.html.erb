@@ -1,0 +1,15 @@
+<% if login? %>
+<div class="comment_detail">
+		<%= form_for(Comment.new,remote: true) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<div class="form-group">
+			<%= f.hidden_field :target_id, value: 15 %>
+			<%= f.hidden_field :parent_id, value: 0 %>
+		</div>
+		<div class="form-group">
+			<%= f.text_area :content, placeholder: "Comment here!!!",id: "parent_cmt"%>
+			<button type="submit" class="btn btn-submit" >Comment</button>
+		</div>
+		<% end %>
+</div>
+<% end %>

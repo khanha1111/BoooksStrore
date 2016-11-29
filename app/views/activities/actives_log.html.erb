@@ -1,0 +1,25 @@
+<div class="inner_page">
+  <div class="signup">
+    <h1>Activity log</h1>
+    <br>
+    <div class="log_form">
+      <%= form_for(logs_path, remote:true) do |f| %>
+      <select name="log[condition]" id="select_log">
+        <option value="%">All</option>
+        <option value="Reading">Filter by Reading</option>
+        <option value="Favorite">Filter by Favorite</option>
+        <option value="Readed">Filter by Readed</option>
+        <option value="Rating">Filter by Rating</option>
+      </select>
+      <%= f.submit :Submit, class: "btn btn-submit", id: "log_btn"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('select').select2();
+
+</script>
+<div id="list_log">
+
+</div>

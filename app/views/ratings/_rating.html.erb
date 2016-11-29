@@ -1,0 +1,28 @@
+<div class="rating">
+  <h4>Rating:</h4>
+  <div class='starrr' id='star2'></div>
+  <form method="post" action="/ratings" data-remote="true">
+  <div id="ip_rating">
+    <input type="hidden" name="[rating]" value='<%= @book.rating.to_i ||=0 %>' id="star2_input">
+  </div>
+  <div id="rs_rating"><div id="old_rating">(<%= "%0.1f" % @rating %></div></div> * Ratings)
+    <input type="hidden" name="[book_id]" value='<%= @book.id%>'>
+    <% if  login? and !check_rate @book.id, "Rating"  %>
+      <input type="submit" value="Rating!" class="btn btn-submit" id="rating_btn">
+    <% end %>
+  </form>
+</div>
+  <script>
+    var $s2input = $('#star2_input');
+    $('#star2').starrr({
+      max: 5,
+      rating: $s2input.val(),
+      change: function(e, value){
+        $s2input.val(value).trigger('input');
+      }
+    });
+    $("#rating_btn").click(function(){
+        alert("Thanks for Rating!");
+        $(this).hide();
+    });
+  </script>

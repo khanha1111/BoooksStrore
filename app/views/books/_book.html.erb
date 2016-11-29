@@ -1,0 +1,12 @@
+<% @books.each do |item| %>
+  <tr>
+    <td><%= item.category.name %></td>
+    <td><%= item.title %></td>
+    <td><%= item.author %></td>
+    <td><%= image_tag item.image.url(:thumb) if item.image? %></td>
+    <td><%= link_to t("edit"), edit_book_path(item.id),
+      class: "fa fa-pencil-square-o" %></td>
+    <td><%= link_to t("delete"), book_path(item.id), method:"delete",
+      data: {confirm: t("confirm")}, class: "fa fa-pencil-square-o" %></td>
+  </tr>
+<% end %>

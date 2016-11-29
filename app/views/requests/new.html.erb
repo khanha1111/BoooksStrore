@@ -1,0 +1,36 @@
+<div class="inner_page">
+  <div class="book">
+    <h1>Add New Book</h1><br>
+    <div class="bookform">
+      <%= form_for(Request.new, :html => {:multipart => true }) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div id="init_cate">
+      <label>Init New Cate</label>
+      <input type="checkbox" id="init_check">
+      </div>
+      <div id="cate_select">
+      <%= f.select :cate_name, Category.all.collect { |c| [ c.name, c.name ] },class: "blah",:include_blank => "Select Category" %>
+      </div>
+      <%= f.text_field :cate_name,class: "input-text",id: "cate_name",placeholder: "Init new Cate Name" %>
+      <%= f.text_field :title, placeholder: "Book Title", :class => "input-text" %>
+      <%= f.text_field :author, placeholder: "Book Author", :class => "input-text" %>
+      <%= f.number_field :num_of_page, placeholder: "Number of page", :class => "input-text" %>
+      <%= f.text_field :publish_date,:class=>"datepicker input-text " %>
+      <div>
+        <label for="file-upload" class="custom-file-upload">
+          <i class="fa fa-cloud-upload"></i> Custom Upload
+        </label>
+        <%= f.file_field :image,id: "file-upload",style: "display:none;" %>
+      </div>
+      <button type="submit" class="btn btn-submit">Create</button>
+    </div>
+    <% end %>
+    <div class="imgbook">
+      <%= image_tag "book.jpg",id: "imgtag", height: 225 %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    jQuery("select").select2();
+</script>
+

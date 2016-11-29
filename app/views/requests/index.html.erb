@@ -1,0 +1,46 @@
+<div class="inner_page">
+  <div class="signup">
+    <div class="tbl">
+      <table>
+        <tr>
+          <th>Cate Name</th>
+          <th>Title</th>
+          <th>Pushlish On</th>
+          <th>Author</th>
+          <th>Num of pages</th>
+          <th>Stautus</th>
+          <th>Action</th>
+        </tr>
+        <% @requests.each do |item| %>
+        <tr>
+          <td class="miniform">
+            <%= form_for Request.new, id: "approve" do |f| %>
+            <%= f.hidden_field :status,value: true %>
+            <%= f.hidden_field :id,value: item.id %>
+            <%= f.select :cate_name, Category.all.collect { |c| [ c.name, c.id ] },:include_blank => item.cate_name %>
+              <%= f.submit "Approve",id: "approve" %>
+            <% end %>
+          </td>
+          <td><%= item.title %></td>
+          <td><%= item.publish_date %></td>
+          <td><%= item.author %></td>
+          <td><%= item.num_of_page %></td>
+          <% if item.status %>
+          <td>Approve</td>
+          <% else %>
+          <td>Watting...</td>
+          <% end %>
+          <td>
+            <%= Request_Toggle item %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+      <%= will_paginate @requests %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    jQuery("select").select2();
+</script>
+

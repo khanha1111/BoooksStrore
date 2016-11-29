@@ -1,0 +1,28 @@
+<div id="list_log">
+  <ul class="custom-servis-ul">
+    <h1>List log</h1><br>
+      <% if !@user.activities.nil? %>
+      <% @user.activities.each do |log| %>
+        <div id="log-<%=log.id %>">
+          <li class="item-1">
+            <h3>
+              <% if current_user.id!=@user.id %>
+              <%= @user.fullname %>
+              <% else %>
+              You've
+              <% end %> been add the Book: <%= link_to log.target.title,log.target %> on the list <%= log.action  %>
+              (at <%=time_ago_in_words(log.target.created_at) %>)
+            </h3>
+          </li>
+          <%= toggle_like_button log,@user %>
+          (<%= log.likes.count %>)
+          <% if current_user==@user %>
+          <div class="space">|</div>
+          <%= link_to " Delete",activity_path(log.id),method: "delete", title: "Remove this actives?",:remote => true,data: { confirm: 'Are you sure?' },class: "fa fa-times",id: "del_log"  %>
+          <% end %>
+        </div>
+      <% end %>
+      <% end %>
+  </ul>
+</div>
+

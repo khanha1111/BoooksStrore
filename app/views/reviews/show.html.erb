@@ -1,0 +1,25 @@
+<div class="review">
+	<h1><%= @review.title %></h1>
+	<% if(login? && current_user.id==@review.user_id) %>
+	<div class="review-edit">
+		<%= link_to "<label for='file-upload' class='custom-file-upload'>
+					<i class='fa fa-pencil'></i> Edit
+		</label></a>".html_safe,edit_review_path(@review.id) %>
+		&nbsp;&nbsp;|&nbsp;&nbsp;
+		<%= link_to "<label for='file-upload' class='custom-file-upload'>
+					<i class='fa fa-trash'></i> Delete
+		</label></a>".html_safe,review_path(@review.id),method: "delete",data: { confirm: 'Are you sure?' }  %>
+	</div>
+	<% end %>
+	<hr>
+	<dir><%= @review.content %></dir>
+	<hr>
+	<div class="comment">
+		<div id="comment-form">
+      <%= render "comments/form" %>
+    </div>
+		<div id="comments-list">
+      <%= render @comments %>
+    </div>
+	</div>
+</div>

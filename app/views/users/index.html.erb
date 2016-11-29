@@ -1,0 +1,17 @@
+<div class="inner_page">
+	<div class="signup">
+			<% @users.each do |item| %>
+			<div class="userList">
+			<%= gravatar_for item, 150 %><br><br>
+			<h2><%= item.fullname %></h2>
+			<% if login? && is_admin? %>
+			<%= link_to " Delete", user_path(item.id),method: "delete",class: "fa fa-trash-o",data: { confirm: 'Are you sure?' } %>
+			&nbsp;&nbsp;|&nbsp;&nbsp;
+			<% end %>
+			<%= link_to " View Profile", item,class: "fa fa-eye" %>
+			</div>
+			<% end %>
+			<br>
+			<%= will_paginate @users %>
+	</div>
+</div>

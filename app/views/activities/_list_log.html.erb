@@ -1,0 +1,26 @@
+<ul class="custom-servis-ul">
+  <% if !@logs.nil? %>
+  <% @logs.each do |l| %>
+  <div id="log-<%=l.id %>">
+    <%= link_to "",activity_path(l.id), class: "action cross",method: "delete", title: "Remove this actives?",:remote => true,data: { confirm: 'Are you sure?' }  %>
+    <li class="item-1">
+      <h3>You've been <%= l.action  %> the
+        <%= l.target_type  %>: <%= link_to l.target.title,l.target %>
+        (at <%=time_ago_in_words(l.target.created_at) %>)
+      </h3>
+      <div class="log_book">
+        <%= image_tag l.target.image.url, :width => 120 %>
+      </div>
+      <ul class="log_details">
+        <li>Title: <span><%= l.target.title  %></span></li>
+        <li>Pushlish On: <span><%= l.target.publish_date %></span></li>
+        <li>Author: <span><%= l.target.author %></span></li>
+        <li>Num of pages: <span><%= l.target.num_of_page %></span></li>
+      </ul>
+    </li>
+    <br>
+  </div>
+  <% end %>
+  <% end %>
+</ul>
+

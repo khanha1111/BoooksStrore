@@ -1,0 +1,33 @@
+<script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+<div class="inner_page">
+  <div class="book">
+    <h1><%= t "add" %></h1><br>
+    <div class="bookform">
+    <%= form_for(Book.new, :html => {:multipart => true }) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.select :category_id, Category.all.collect { |c| [ c.name, c.id ] },class: "blah",:include_blank => "Select Category" %>
+      <%= f.text_field :title, placeholder: t("book_title"), :class => "input-text" %>
+      <%= f.text_field :author, placeholder: t("book_author"), :class => "input-text" %>
+      <%= f.number_field :num_of_page, placeholder: t("num"), :class => "input-text" %>
+      <%= f.text_field :publish_date, placeholder: t("date"), class: "input-text" %>
+      <div>
+        <label for="file-upload" class="custom-file-upload">
+          <i class="fa fa-cloud-upload"></i> <%= t "custom" %>
+        </label>
+        <%= f.file_field :image,id: "file-upload",style: "display:none;",onchange: "previewFile()" %>
+      </div>
+      <button type="submit" class="btn btn-submit"><%= t "create" %></button>
+    </div>
+    <% end %>
+    <div class="imgbook">
+      <%= image_tag "book.jpg",id: "imgtag", height: 225 %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#datepicker").shieldDatePicker();
+          jQuery('select').select2();
+    });
+</script>

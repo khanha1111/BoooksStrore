@@ -1,0 +1,9 @@
+thanh: "akasd"
+ten: 10
+zero: 0
+Scop:
+  [{key: "Reading",value: "Filter by Reading"},
+   {key: "Favorite",value: "Filter by Favorite"},
+   {key: "Readed",value: "Filter by Readed"},
+   {key: "Rating",value: "Filter by Rating"}
+  ]
